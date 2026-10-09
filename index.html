@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <base href="/">
+  <base href="/MiAppFlet/">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Mi aplicación Flet">
@@ -49,9 +49,9 @@
       pyodide: true,
       noCdn: false,
       webSocketEndpoint: "/ws",
-      entrypointBaseUrl: "/",
-      assetBase: "/",
-      routeUrlStrategy: "path",
+      entrypointBaseUrl: "/MiAppFlet/",
+      assetBase: "/MiAppFlet/",
+      routeUrlStrategy: "hash",
       // Only pinned when bundling. Left null, Flutter resolves CanvasKit from
       // gstatic and the Noto fallback fonts from Google Fonts, and the build
       // skips shipping local copies. A host serving its own runtime can assign
