@@ -12,19 +12,22 @@ jobs:
       - name: Descargar proyecto
         uses: actions/checkout@v4
 
-      - name: Compilar aplicación iOS
-        id: build
-        uses: flet-dev/flet-build-action@v1
+      - name: Configurar Python
+        uses: actions/setup-python@v5
         with:
-          target: ipa
-          working-directory: .
-          runner-python-version: "3.12"
-          bundled-python-version: "3.12"
-          build-number: ${{ github.run_number }}
+          python-version: "3.12"
+
+      - name: Instalar Flet
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install flet==1.0.4
+
+      - name: Compilar aplicación iOS
+        run: flet build ipa --yes --no-rich-output
 
       - name: Guardar resultado
         uses: actions/upload-artifact@v4
         with:
           name: flet-ipa
-          path: ${{ steps.build.outputs.archive-path }}
+          path: build/ipa/**
           if-no-files-found: error
